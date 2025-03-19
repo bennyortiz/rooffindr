@@ -1,26 +1,213 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* RoofFindr Theme - Light Mode */
+    --radius: 0.625rem;
+    
+    /* Base */
+    --background: 0 0% 100%; /* White */
+    --foreground: 215 19% 35%; /* Dark Gray - #2C3E50 */
+    
+    /* Card */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 215 19% 35%; /* Dark Gray - #2C3E50 */
+    
+    /* Popover */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 215 19% 35%; /* Dark Gray - #2C3E50 */
+    
+    /* Primary - Terracotta */
+    --primary: 28 83% 52%; /* Terracotta - #E67E22 */
+    --primary-foreground: 0 0% 100%; /* White */
+    
+    /* Secondary - Slate Blue */
+    --secondary: 210 29% 24%; /* Slate Blue - #2C3E50 */
+    --secondary-foreground: 0 0% 100%; /* White */
+    
+    /* Muted */
+    --muted: 210 9% 96%; /* Light Gray - #F5F7FA */
+    --muted-foreground: 215 15% 34%; /* Medium Gray - #95A5A6 */
+    
+    /* Accent - Sky Blue */
+    --accent: 204 70% 53%; /* Sky Blue - #3498DB */
+    --accent-foreground: 0 0% 100%; /* White */
+    
+    /* Destructive */
+    --destructive: 0 84% 60%; /* Red */
+    --destructive-foreground: 0 0% 100%; /* White */
+    
+    /* Border, Input, Ring */
+    --border: 214 32% 91%; /* Light Border */
+    --input: 214 32% 91%; /* Light Input */
+    --ring: 28 83% 52%; /* Terracotta - #E67E22 */
+  }
+
+  .dark {
+    /* RoofFindr Theme - Dark Mode */
+    
+    /* Base */
+    --background: 210 29% 13%; /* Darker Slate Blue */
+    --foreground: 0 0% 95%; /* Off White */
+    
+    /* Card */
+    --card: 210 29% 19%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 95%; /* Off White */
+    
+    /* Popover */
+    --popover: 210 29% 19%; /* Slightly lighter than background */
+    --popover-foreground: 0 0% 95%; /* Off White */
+    
+    /* Primary - Terracotta (brighter in dark mode) */
+    --primary: 28 90% 55%; /* Brighter Terracotta */
+    --primary-foreground: 0 0% 100%; /* White */
+    
+    /* Secondary */
+    --secondary: 210 29% 29%; /* Charcoal - #34495E */
+    --secondary-foreground: 0 0% 95%; /* Off White */
+    
+    /* Muted */
+    --muted: 215 14% 25%; /* Darker muted background */
+    --muted-foreground: 215 10% 70%; /* Lighter muted text */
+    
+    /* Accent - Sky Blue (adjusted for dark mode) */
+    --accent: 204 80% 40%; /* Darker Sky Blue */
+    --accent-foreground: 0 0% 95%; /* Off White */
+    
+    /* Destructive */
+    --destructive: 0 70% 50%; /* Darker Red */
+    --destructive-foreground: 0 0% 95%; /* Off White */
+    
+    /* Border, Input, Ring */
+    --border: 0 0% 100% / 10%; /* Subtle white border */
+    --input: 0 0% 100% / 15%; /* Subtle white input */
+    --ring: 28 90% 55%; /* Brighter Terracotta */
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-jakarta-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    letter-spacing: -0.025em;
+  }
+  h1 {
+    font-size: 2.25rem; /* text-4xl */
+  }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem; /* text-5xl */
+    }
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.75rem; /* text-6xl */
+    }
+  }
+  h2 {
+    font-size: 1.875rem; /* text-3xl */
+  }
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 2.25rem; /* text-4xl */
+    }
+  }
+  h3 {
+    font-size: 1.5rem; /* text-2xl */
+  }
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 1.875rem; /* text-3xl */
+    }
+  }
+  .container {
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    max-width: 80rem; /* max-w-7xl */
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* sm:px-6 */
+      padding-right: 1.5rem; /* sm:px-6 */
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* lg:px-8 */
+      padding-right: 2rem; /* lg:px-8 */
+    }
+  }
+  .section {
+    padding-top: 3rem; /* py-12 */
+    padding-bottom: 3rem; /* py-12 */
+  }
+  @media (min-width: 768px) {
+    .section {
+      padding-top: 4rem; /* md:py-16 */
+      padding-bottom: 4rem; /* md:py-16 */
+    }
+  }
+  @media (min-width: 1024px) {
+    .section {
+      padding-top: 5rem; /* lg:py-20 */
+      padding-bottom: 5rem; /* lg:py-20 */
+    }
+  }
+  
+  /* Custom container class that's 20% narrower than default */
+  .container-narrow {
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    width: 80%; /* 20% narrower than full width */
+    max-width: 64rem; /* max-w-6xl - reduced from 80rem (max-w-7xl) */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  @media (max-width: 640px) {
+    .container-narrow {
+      width: 100%; /* Use full width on mobile */
+      padding-left: 1.25rem; /* Increased padding from default 1rem */
+      padding-right: 1.25rem; /* Increased padding from default 1rem */
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .container-narrow {
+      padding-left: 1.5rem; /* sm:px-6 */
+      padding-right: 1.5rem; /* sm:px-6 */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-narrow {
+      padding-left: 2rem; /* lg:px-8 */
+      padding-right: 2rem; /* lg:px-8 */
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
 }
