@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Roofer } from "@/types";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Roofer } from '@/types';
 
 interface RooferCardProps {
   roofer: Roofer;
@@ -13,50 +13,54 @@ interface RooferCardProps {
 
 /**
  * Card component for displaying roofer information
- * 
+ *
  * @param roofer - Roofer data to display
  * @param className - Additional CSS classes
  */
 export function RooferCard({ roofer, className }: RooferCardProps) {
   const profileLink = roofer.slug ? `/roofers/${roofer.slug}` : `/roofers/${roofer.id}`;
-  
+
   return (
-    <Card className={`overflow-hidden border-0 shadow-md h-full flex flex-col group ${className || ""}`}>
-      <div className="h-48 relative overflow-hidden">
+    <Card
+      className={`overflow-hidden border-0 shadow-md h-full flex flex-col group w-full ${className || ''}`}
+    >
+      <div className="h-40 sm:h-48 relative overflow-hidden bg-muted">
         <Image
           src={roofer.image}
           alt={roofer.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          style={{ 
-            objectFit: "cover",
-            transition: "transform 0.5s ease"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+            transform: 'scale(1.05)',
+            transition: 'transform 0.5s ease',
           }}
-          className="group-hover:scale-105"
+          className="group-hover:scale-110"
         />
       </div>
-      <CardContent className="p-6 flex-grow flex flex-col">
-        <h3 className="text-xl font-semibold mb-2">{roofer.name}</h3>
-        <div className="flex items-center mb-3">
+      <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
+        <h3 className="text-lg sm:text-xl font-semibold mb-2">{roofer.name}</h3>
+        <div className="flex items-center mb-2 sm:mb-3">
           <RatingStars rating={roofer.rating} />
-          <span className="ml-2 text-sm font-medium">
+          <span className="ml-2 text-xs sm:text-sm font-medium">
             {roofer.rating} ({roofer.reviews} reviews)
           </span>
         </div>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
           {roofer.services.map((service) => (
             <span
               key={service}
-              className="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-full"
+              className="px-1.5 sm:px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-full"
             >
               {service}
             </span>
           ))}
         </div>
         <div className="mt-auto">
-          <Button 
-            variant="outline" 
-            className="w-full border-primary text-primary hover:bg-primary/10"
+          <Button
+            variant="outline"
+            className="w-full border-primary text-primary hover:bg-primary/10 h-9 sm:h-10 text-sm sm:text-base"
             asChild
           >
             <Link href={profileLink}>View Profile</Link>
@@ -69,7 +73,7 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
 
 /**
  * Star rating component
- * 
+ *
  * @param rating - Rating value (0-5)
  */
 function RatingStars({ rating }: { rating: number }) {
@@ -81,9 +85,7 @@ function RatingStars({ rating }: { rating: number }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className={`w-4 h-4 ${
-            i < Math.floor(rating) ? "opacity-100" : "opacity-30"
-          }`}
+          className={`w-4 h-4 ${i < Math.floor(rating) ? 'opacity-100' : 'opacity-30'}`}
         >
           <path
             fillRule="evenodd"
