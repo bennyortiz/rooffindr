@@ -93,16 +93,23 @@ export function FeaturedRoofers({
     <Section bgColor="bg-muted" className={className}>
       <SectionHeader title={title} />
 
-      <Carousel className="w-full mx-auto">
-        <CarouselContent className="h-full">
+      <Carousel 
+        className="w-full mx-auto"
+        opts={{
+          align: 'start',
+          slidesToScroll: 'auto',
+          containScroll: 'trimSnaps'
+        }}
+      >
+        <CarouselContent className="h-full -ml-2 md:-ml-4">
           {isLoading
             ? // Skeleton loading UI
               Array.from({ length: 3 }).map((_, index) => (
                 <CarouselItem
                   key={`skeleton-${index}`}
-                  className="basis-full md:basis-1/2 lg:basis-1/3 h-full"
+                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 h-full"
                 >
-                  <div className="p-1 h-full w-full">
+                  <div className="h-full w-full">
                     <div
                       ref={el => {
                         cardsRef.current[index] = el;
@@ -129,8 +136,8 @@ export function FeaturedRoofers({
               ))
             : // Actual content
               roofers.map((roofer, index) => (
-                <CarouselItem key={roofer.id} className="basis-full md:basis-1/2 lg:basis-1/3 h-full">
-                  <div className="p-1 h-full w-full">
+                <CarouselItem key={roofer.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 h-full">
+                  <div className="h-full w-full">
                     <div 
                       ref={el => {
                         cardsRef.current[index] = el;

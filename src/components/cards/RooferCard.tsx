@@ -32,11 +32,11 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           style={{
             objectFit: 'cover',
-            objectPosition: 'center',
-            transform: 'scale(1.05)',
+            objectPosition: 'center top',
+            transform: 'scale(1.1)',
             transition: 'transform 0.5s ease',
           }}
-          className="group-hover:scale-110"
+          className="group-hover:scale-115"
         />
       </div>
       <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
