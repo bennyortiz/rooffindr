@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
@@ -76,6 +78,8 @@ export default function RootLayout({
           
           <Footer />
           <Toaster />
+          <SpeedInsights />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
