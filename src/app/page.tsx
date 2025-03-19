@@ -7,6 +7,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Cta } from "@/components/sections/Cta";
 import { Faq } from "@/components/sections/Faq";
+import { StructuredData } from "@/components/seo";
 import { 
   featuredRoofers, 
   howItWorksSteps, 
@@ -16,6 +17,7 @@ import {
   faqItems
 } from "@/data/home-page";
 import { Step } from "@/types";
+import { siteConfig } from "@/lib/seo";
 
 /**
  * Home page component
@@ -38,6 +40,42 @@ export default function Home() {
 
   return (
     <>
+      {/* Organization Structured Data */}
+      <StructuredData 
+        type="Organization"
+        data={{
+          name: siteConfig.siteName,
+          url: siteConfig.siteUrl,
+          logo: `${siteConfig.siteUrl}/logo.png`,
+          sameAs: [
+            "https://twitter.com/rooffindr",
+            "https://facebook.com/rooffindr",
+            "https://instagram.com/rooffindr"
+          ],
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+1-555-123-4567",
+            contactType: "customer service",
+            areaServed: "TX",
+            availableLanguage: "English"
+          }
+        }}
+      />
+      
+      {/* FAQ Structured Data */}
+      <StructuredData 
+        type="FAQPage"
+        data={{
+          mainEntity: faqItems.map(item => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer
+            }
+          }))
+        }}
+      />
       {/* Hero Section */}
       <Hero
         {...heroData}
