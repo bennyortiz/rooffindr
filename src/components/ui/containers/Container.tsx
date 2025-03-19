@@ -21,7 +21,7 @@ interface ContainerProps {
 export function Container({ children, className, narrow = false, fullWidth = false }: ContainerProps) {
   return (
     <div className={cn(
-      'container mx-auto px-4 sm:px-6', 
+      'container mx-auto px-3 sm:px-4 md:px-6', 
       narrow && 'max-w-5xl', 
       fullWidth && 'max-w-none',
       className

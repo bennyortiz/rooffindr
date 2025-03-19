@@ -34,7 +34,7 @@ export function Section({
   useNarrowContainer = true,
 }: BaseSectionProps) {
   return (
-    <section id={id} className={cn('py-16', bgColor, textColor, className)}>
+    <section id={id} className={cn('py-10 sm:py-12 md:py-14 lg:py-16', bgColor, textColor, className)}>
       <Container narrow={useNarrowContainer} className={containerClassName}>
         {children}
       </Container>
@@ -65,19 +65,19 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        'mb-12',
+        'mb-8 sm:mb-10 md:mb-12',
         align === 'center' && 'text-center',
         align === 'right' && 'text-right',
         className
       )}
     >
       {pill && (
-        <div className={cn('mb-3', align === 'center' && 'flex justify-center')}>
+        <div className={cn('mb-2 sm:mb-3', align === 'center' && 'flex justify-center')}>
           <Pill text={pill} variant={pillVariant} />
         </div>
       )}
-      <h2 className="text-3xl font-bold mb-4">{title}</h2>
-      {description && <p className="text-muted-foreground max-w-2xl mx-auto">{description}</p>}
+      <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">{title}</h2>
+      {description && <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">{description}</p>}
     </div>
   );
 }

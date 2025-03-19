@@ -145,18 +145,18 @@ export function RoofingForm({ onSubmit, className }: RoofingFormProps) {
           isActive={step === 1}
           isTransitioning={isTransitioning}
         >
-          <div className="space-y-3">
-            <div className="space-y-2 transition-all duration-300 ease-in-out">
+          <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-1 sm:space-y-2 transition-all duration-300 ease-in-out">
               <Label htmlFor="address">Street Address</Label>
               <div className="flex">
-                <HomeIcon className="mr-2 h-4 w-4 opacity-70 mt-3" />
+                <HomeIcon className="mr-2 h-4 w-4 opacity-70 mt-2 sm:mt-3" />
                 <Input
                   id="address"
                   placeholder="123 Main St"
                   value={formData.address}
                   onChange={(e) => updateFormData('address', e.target.value)}
                   autoFocus
-                  className="h-10 text-sm"
+                  className="h-8 sm:h-10 text-xs sm:text-sm"
                 />
               </div>
             </div>
@@ -164,29 +164,29 @@ export function RoofingForm({ onSubmit, className }: RoofingFormProps) {
             {/* City and ZIP fields appear after address is entered */}
             <div
               className={cn(
-                'space-y-3 transition-all duration-500 ease-in-out',
+                'space-y-2 sm:space-y-3 transition-all duration-500 ease-in-out',
                 showCityZip ? 'max-h-40 opacity-100 bg-white' : 'max-h-0 opacity-0 overflow-hidden'
               )}
             >
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-2">
-                  <Label htmlFor="city">City</Label>
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="city" className="text-xs sm:text-sm">City</Label>
                   <Input
                     id="city"
                     placeholder="Austin"
                     value={formData.city}
                     onChange={(e) => updateFormData('city', e.target.value)}
-                    className="h-10 text-sm"
+                    className="h-8 sm:h-10 text-xs sm:text-sm"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="zipCode">ZIP Code</Label>
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="zipCode" className="text-xs sm:text-sm">ZIP Code</Label>
                   <Input
                     id="zipCode"
                     placeholder="78701"
                     value={formData.zipCode}
                     onChange={(e) => updateFormData('zipCode', e.target.value)}
-                    className="h-10 text-sm"
+                    className="h-8 sm:h-10 text-xs sm:text-sm"
                   />
                 </div>
               </div>
@@ -208,8 +208,8 @@ export function RoofingForm({ onSubmit, className }: RoofingFormProps) {
           isActive={step === 2}
           isTransitioning={isTransitioning}
         >
-          <div className="space-y-4">
-            <div className="space-y-2">
+          <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-1 sm:space-y-2">
               <Label>Project Type</Label>
               <RadioGroup
                 value={formData.projectType}
@@ -218,29 +218,29 @@ export function RoofingForm({ onSubmit, className }: RoofingFormProps) {
                   // Auto-advance after a short delay when selection is made
                   setTimeout(() => nextStep(), 800);
                 }}
-                className="flex flex-col space-y-2"
+                className="flex flex-col space-y-1.5 sm:space-y-2"
               >
-                <div className="flex items-center space-x-2 p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[3rem]">
-                  <RadioGroupItem value="repair" id="repair" className="h-5 w-5" />
-                  <Label htmlFor="repair" className="cursor-pointer font-medium flex-1">
+                <div className="flex items-center space-x-2 p-1.5 sm:p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[2.5rem] sm:min-h-[3rem]">
+                  <RadioGroupItem value="repair" id="repair" className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Label htmlFor="repair" className="cursor-pointer font-medium flex-1 text-xs sm:text-sm">
                     Repair
                   </Label>
                 </div>
-                <div className="flex items-center space-x-2 p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[3rem]">
-                  <RadioGroupItem value="replacement" id="replacement" className="h-5 w-5" />
-                  <Label htmlFor="replacement" className="cursor-pointer font-medium flex-1">
+                <div className="flex items-center space-x-2 p-1.5 sm:p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[2.5rem] sm:min-h-[3rem]">
+                  <RadioGroupItem value="replacement" id="replacement" className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Label htmlFor="replacement" className="cursor-pointer font-medium flex-1 text-xs sm:text-sm">
                     Full Replacement
                   </Label>
                 </div>
-                <div className="flex items-center space-x-2 p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[3rem]">
-                  <RadioGroupItem value="inspection" id="inspection" className="h-5 w-5" />
-                  <Label htmlFor="inspection" className="cursor-pointer font-medium flex-1">
+                <div className="flex items-center space-x-2 p-1.5 sm:p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[2.5rem] sm:min-h-[3rem]">
+                  <RadioGroupItem value="inspection" id="inspection" className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Label htmlFor="inspection" className="cursor-pointer font-medium flex-1 text-xs sm:text-sm">
                     Inspection
                   </Label>
                 </div>
-                <div className="flex items-center space-x-2 p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[3rem]">
-                  <RadioGroupItem value="new" id="new" className="h-5 w-5" />
-                  <Label htmlFor="new" className="cursor-pointer font-medium flex-1">
+                <div className="flex items-center space-x-2 p-1.5 sm:p-2 rounded-md border hover:bg-muted/50 transition-colors cursor-pointer min-h-[2.5rem] sm:min-h-[3rem]">
+                  <RadioGroupItem value="new" id="new" className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Label htmlFor="new" className="cursor-pointer font-medium flex-1 text-xs sm:text-sm">
                     New Construction
                   </Label>
                 </div>

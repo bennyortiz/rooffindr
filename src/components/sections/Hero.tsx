@@ -70,7 +70,7 @@ export function Hero({
             alt="Hero Background"
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
             style={{ objectFit: 'cover' }}
           />
         ) : (
@@ -80,16 +80,18 @@ export function Hero({
       </div>
 
       {/* Hero Content */}
-      <Container narrow className="relative z-10 py-12 md:py-16 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start lg:items-center">
-          <div className="text-white space-y-4 sm:space-y-6 flex flex-col justify-center h-full">
+      <Container narrow className="relative z-10 py-8 md:py-12 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-start lg:items-center">
+          <div className="text-white space-y-4 sm:space-y-5 flex flex-col justify-center h-full px-1 sm:px-0">
             {/* Added text shadow for better text visibility */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-shadow-lg drop-shadow-md">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-shadow-lg drop-shadow-md">
               {title}
             </h1>
-            <p className="text-base sm:text-lg md:text-xl opacity-90 max-w-lg drop-shadow-sm">{description}</p>
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              <Button size="lg" className="text-sm sm:text-base px-4 py-2 h-auto" asChild>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl opacity-90 max-w-lg drop-shadow-sm">
+              {description}
+            </p>
+            <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
+              <Button size="lg" className="text-xs sm:text-sm md:text-base px-3 sm:px-4 py-2 h-auto" asChild>
                 <Link href={primaryButtonLink}>{primaryButtonText}</Link>
               </Button>
 
@@ -97,7 +99,7 @@ export function Hero({
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 text-white border-white/20 hover:bg-white/20 text-sm sm:text-base px-4 py-2 h-auto"
+                  className="bg-white/10 text-white border-white/20 hover:bg-white/20 text-xs sm:text-sm md:text-base px-3 sm:px-4 py-2 h-auto"
                   asChild
                 >
                   <Link href={secondaryButtonLink}>{secondaryButtonText}</Link>
@@ -117,7 +119,7 @@ export function Hero({
 
           {/* Right Side Content - Form or Custom Content */}
           {children && (
-            <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 mt-6 lg:mt-0 h-full flex flex-col justify-center">
+            <div className="bg-white rounded-xl shadow-2xl p-3 sm:p-4 md:p-6 lg:p-8 mt-4 sm:mt-6 lg:mt-0 h-full flex flex-col justify-center">
               {children}
             </div>
           )}
