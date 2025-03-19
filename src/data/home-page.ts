@@ -41,6 +41,7 @@ export const featuredRoofers: Roofer[] = [
     reviews: 127,
     image: "https://images.unsplash.com/photo-1560343776-97e7d202ff0e?q=80&w=2070&auto=format&fit=crop",
     services: ["Residential", "Commercial", "Repairs"],
+    cities: ["Dallas", "Fort Worth", "Plano"],
     slug: "texas-roofing-experts",
   },
   {
@@ -50,6 +51,7 @@ export const featuredRoofers: Roofer[] = [
     reviews: 94,
     image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2070&auto=format&fit=crop",
     services: ["Residential", "Metal Roofs", "Inspections"],
+    cities: ["Houston", "Sugar Land", "Katy"],
     slug: "lone-star-roofing",
   },
   {
@@ -59,6 +61,7 @@ export const featuredRoofers: Roofer[] = [
     reviews: 86,
     image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop",
     services: ["Residential", "Tile Roofs", "Repairs"],
+    cities: ["Austin", "Round Rock", "Cedar Park"],
     slug: "austin-roof-pros",
   },
 ];

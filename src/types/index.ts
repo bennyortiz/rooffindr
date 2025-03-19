@@ -3,19 +3,7 @@
  */
 
 import { ReactNode } from "react";
-
-/**
- * Roofer profile data
- */
-export interface Roofer {
-  id: number | string;
-  name: string;
-  rating: number;
-  reviews: number;
-  image: string;
-  services: string[];
-  slug?: string;
-}
+export * from './roofer';
 
 /**
  * Testimonial data
