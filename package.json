@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --no-lint",
     "build:no-lint": "next build --no-lint",
+    "build:vercel": "next build --no-lint",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
