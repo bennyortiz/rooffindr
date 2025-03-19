@@ -24,7 +24,7 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
     <Card
       className={`overflow-hidden border-0 shadow-md h-full flex flex-col group w-full ${className || ''}`}
     >
-      <div className="h-40 sm:h-48 relative overflow-hidden bg-muted">
+      <div className="h-36 sm:h-44 relative overflow-hidden bg-primary/5">
         <Image
           src={roofer.image}
           alt={roofer.name}
@@ -32,11 +32,11 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           style={{
             objectFit: 'cover',
-            objectPosition: 'center top',
-            transform: 'scale(1.1)',
+            objectPosition: 'top',
+            transform: 'scale(1.2)',
             transition: 'transform 0.5s ease',
           }}
-          className="group-hover:scale-115"
+          className="group-hover:scale-125"
         />
       </div>
       <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
