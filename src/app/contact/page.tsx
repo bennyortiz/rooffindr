@@ -9,7 +9,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { MailIcon, HomeIcon, PhoneIcon, GlobeIcon, Building2, CheckSquare, Clock, FileText } from 'lucide-react';
+import { 
+  MailIcon, HomeIcon, PhoneIcon, GlobeIcon, Building2Icon,
+  CheckSquareIcon, ClockIcon, FileTextIcon, UserIcon, MapPinIcon, 
+  UsersIcon, ShieldIcon, SmileIcon
+} from 'lucide-react';
 import { StructuredData } from '@/components/seo';
 import { siteConfig } from '@/lib/config/site';
 
@@ -89,7 +93,7 @@ export default function ContactPage() {
         }}
       />
     
-      <Section bgColor="bg-muted/50" className="py-12 md:py-20">
+      <Section bgColor="bg-muted/30" className="py-12 md:py-20">
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
@@ -100,64 +104,58 @@ export default function ContactPage() {
             </div>
 
             {!isSubmitted ? (
-              <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Business Information */}
-                    <div className="space-y-6 md:col-span-2">
-                      <h2 className="text-xl font-semibold border-b pb-2">Business Information</h2>
-                      
-                      <div className="space-y-4">
-                        <div>
-                          <Label htmlFor="businessName">Business Name</Label>
-                          <div className="flex mt-1.5">
-                            <Building2 className="mr-2 h-4 w-4 opacity-70 mt-3" />
-                            <Input
-                              id="businessName"
-                              placeholder="Your company name"
-                              value={formData.businessName}
-                              onChange={(e) => updateFormData('businessName', e.target.value)}
-                              required
-                            />
-                          </div>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <Label htmlFor="contactName">Contact Person</Label>
-                            <Input
-                              id="contactName"
-                              placeholder="Full name"
-                              value={formData.contactName}
-                              onChange={(e) => updateFormData('contactName', e.target.value)}
-                              required
-                              className="mt-1.5"
-                            />
-                          </div>
-                          
-                          <div>
-                            <Label htmlFor="yearsInBusiness">Years in Business</Label>
-                            <div className="flex mt-1.5">
-                              <Clock className="mr-2 h-4 w-4 opacity-70 mt-3" />
-                              <Input
-                                id="yearsInBusiness"
-                                placeholder="e.g. 5"
-                                value={formData.yearsInBusiness}
-                                onChange={(e) => updateFormData('yearsInBusiness', e.target.value)}
-                                required
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="bg-primary/5 p-4 border-b border-primary/10">
+                  <h2 className="text-lg font-medium text-primary">Business Application Form</h2>
+                </div>
+                <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
+                  {/* Business Information */}
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Building2Icon className="h-5 w-5 text-primary" />
+                      <h2 className="text-xl font-semibold">Business Information</h2>
                     </div>
                     
-                    {/* Contact Information */}
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <Label htmlFor="email">Email Address</Label>
-                        <div className="flex mt-1.5">
-                          <MailIcon className="mr-2 h-4 w-4 opacity-70 mt-3" />
+                        <Label htmlFor="businessName" className="text-sm font-medium">
+                          Business Name <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
+                          <Input
+                            id="businessName"
+                            placeholder="Your company name"
+                            value={formData.businessName}
+                            onChange={(e) => updateFormData('businessName', e.target.value)}
+                            required
+                            className="pl-9"
+                          />
+                          <Building2Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="contactName" className="text-sm font-medium">
+                          Contact Person <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
+                          <Input
+                            id="contactName"
+                            placeholder="Full name"
+                            value={formData.contactName}
+                            onChange={(e) => updateFormData('contactName', e.target.value)}
+                            required
+                            className="pl-9"
+                          />
+                          <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="email" className="text-sm font-medium">
+                          Email Address <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
                           <Input
                             id="email"
                             type="email"
@@ -165,14 +163,17 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={(e) => updateFormData('email', e.target.value)}
                             required
+                            className="pl-9"
                           />
+                          <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                       </div>
                       
                       <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <div className="flex mt-1.5">
-                          <PhoneIcon className="mr-2 h-4 w-4 opacity-70 mt-3" />
+                        <Label htmlFor="phone" className="text-sm font-medium">
+                          Phone Number <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
                           <Input
                             id="phone"
                             type="tel"
@@ -180,94 +181,142 @@ export default function ContactPage() {
                             value={formData.phone}
                             onChange={(e) => updateFormData('phone', e.target.value)}
                             required
+                            className="pl-9"
                           />
+                          <PhoneIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                       </div>
                       
                       <div>
-                        <Label htmlFor="website">Website</Label>
-                        <div className="flex mt-1.5">
-                          <GlobeIcon className="mr-2 h-4 w-4 opacity-70 mt-3" />
+                        <Label htmlFor="website" className="text-sm font-medium">
+                          Website
+                        </Label>
+                        <div className="mt-1.5 relative">
                           <Input
                             id="website"
                             type="url"
                             placeholder="https://www.example.com"
                             value={formData.website}
                             onChange={(e) => updateFormData('website', e.target.value)}
+                            className="pl-9"
                           />
+                          <GlobeIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="yearsInBusiness" className="text-sm font-medium">
+                          Years in Business <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
+                          <Input
+                            id="yearsInBusiness"
+                            placeholder="e.g. 5"
+                            value={formData.yearsInBusiness}
+                            onChange={(e) => updateFormData('yearsInBusiness', e.target.value)}
+                            required
+                            className="pl-9"
+                          />
+                          <ClockIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                       </div>
                     </div>
+                  </div>
+                  
+                  {/* Location Information */}
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <MapPinIcon className="h-5 w-5 text-primary" />
+                      <h2 className="text-xl font-semibold">Location Information</h2>
+                    </div>
                     
-                    {/* Location Information */}
-                    <div className="space-y-4">
-                      <div>
-                        <Label htmlFor="address">Business Address</Label>
-                        <div className="flex mt-1.5">
-                          <HomeIcon className="mr-2 h-4 w-4 opacity-70 mt-3" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="md:col-span-2">
+                        <Label htmlFor="address" className="text-sm font-medium">
+                          Business Address <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
                           <Input
                             id="address"
                             placeholder="Street address"
                             value={formData.address}
                             onChange={(e) => updateFormData('address', e.target.value)}
                             required
+                            className="pl-9"
                           />
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="city">City</Label>
-                          <Input
-                            id="city"
-                            placeholder="Austin"
-                            value={formData.city}
-                            onChange={(e) => updateFormData('city', e.target.value)}
-                            required
-                            className="mt-1.5"
-                          />
-                        </div>
-                        
-                        <div>
-                          <Label htmlFor="zipCode">ZIP Code</Label>
-                          <Input
-                            id="zipCode"
-                            placeholder="78701"
-                            value={formData.zipCode}
-                            onChange={(e) => updateFormData('zipCode', e.target.value)}
-                            required
-                            className="mt-1.5"
-                          />
+                          <HomeIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                       </div>
                       
                       <div>
-                        <Label htmlFor="licenseNumber">License Number</Label>
-                        <div className="flex mt-1.5">
-                          <FileText className="mr-2 h-4 w-4 opacity-70 mt-3" />
+                        <Label htmlFor="city" className="text-sm font-medium">
+                          City <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                          id="city"
+                          placeholder="Austin"
+                          value={formData.city}
+                          onChange={(e) => updateFormData('city', e.target.value)}
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="zipCode" className="text-sm font-medium">
+                          ZIP Code <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                          id="zipCode"
+                          placeholder="78701"
+                          value={formData.zipCode}
+                          onChange={(e) => updateFormData('zipCode', e.target.value)}
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                      
+                      <div className="md:col-span-2">
+                        <Label htmlFor="licenseNumber" className="text-sm font-medium">
+                          License Number <span className="text-red-500">*</span>
+                        </Label>
+                        <div className="mt-1.5 relative">
                           <Input
                             id="licenseNumber"
                             placeholder="Your business license number"
                             value={formData.licenseNumber}
                             onChange={(e) => updateFormData('licenseNumber', e.target.value)}
                             required
+                            className="pl-9"
                           />
+                          <FileTextIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                       </div>
                     </div>
+                  </div>
+                  
+                  {/* Services Offered */}
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="h-5 w-5 text-primary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                      </div>
+                      <h2 className="text-xl font-semibold">Services Offered</h2>
+                    </div>
                     
-                    {/* Services Offered */}
-                    <div className="md:col-span-2 space-y-4">
-                      <h2 className="text-xl font-semibold border-b pb-2">Services Offered</h2>
-                      
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-3">
+                    <div className="bg-muted/10 p-5 rounded-lg border border-muted/30">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6">
                         <div className="flex items-center space-x-2">
                           <Checkbox 
                             id="residential" 
                             checked={formData.services.residential}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.residential', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="residential" className="cursor-pointer">Residential</Label>
+                          <Label htmlFor="residential" className="cursor-pointer text-sm">Residential</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -275,8 +324,9 @@ export default function ContactPage() {
                             id="commercial" 
                             checked={formData.services.commercial}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.commercial', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="commercial" className="cursor-pointer">Commercial</Label>
+                          <Label htmlFor="commercial" className="cursor-pointer text-sm">Commercial</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -284,8 +334,9 @@ export default function ContactPage() {
                             id="repairs" 
                             checked={formData.services.repairs}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.repairs', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="repairs" className="cursor-pointer">Repairs</Label>
+                          <Label htmlFor="repairs" className="cursor-pointer text-sm">Repairs</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -293,8 +344,9 @@ export default function ContactPage() {
                             id="replacement" 
                             checked={formData.services.replacement}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.replacement', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="replacement" className="cursor-pointer">Replacement</Label>
+                          <Label htmlFor="replacement" className="cursor-pointer text-sm">Replacement</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -302,8 +354,9 @@ export default function ContactPage() {
                             id="inspection" 
                             checked={formData.services.inspection}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.inspection', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="inspection" className="cursor-pointer">Inspection</Label>
+                          <Label htmlFor="inspection" className="cursor-pointer text-sm">Inspection</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -311,8 +364,9 @@ export default function ContactPage() {
                             id="gutters" 
                             checked={formData.services.gutters}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.gutters', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="gutters" className="cursor-pointer">Gutters</Label>
+                          <Label htmlFor="gutters" className="cursor-pointer text-sm">Gutters</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -320,8 +374,9 @@ export default function ContactPage() {
                             id="siding" 
                             checked={formData.services.siding}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.siding', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="siding" className="cursor-pointer">Siding</Label>
+                          <Label htmlFor="siding" className="cursor-pointer text-sm">Siding</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -329,34 +384,48 @@ export default function ContactPage() {
                             id="other" 
                             checked={formData.services.other}
                             onCheckedChange={(checked: boolean | 'indeterminate') => updateFormData('services.other', checked === true)}
+                            className="text-primary border-muted-foreground/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
-                          <Label htmlFor="other" className="cursor-pointer">Other</Label>
+                          <Label htmlFor="other" className="cursor-pointer text-sm">Other</Label>
                         </div>
-                      </div>
-                    </div>
-                    
-                    {/* Business Description */}
-                    <div className="md:col-span-2 space-y-4">
-                      <h2 className="text-xl font-semibold border-b pb-2">Business Description</h2>
-                      
-                      <div>
-                        <Label htmlFor="description">Tell us about your business</Label>
-                        <Textarea
-                          id="description"
-                          placeholder="Please provide a brief description of your business, your specialties, and why homeowners should choose you..."
-                          value={formData.description}
-                          onChange={(e) => updateFormData('description', e.target.value)}
-                          className="mt-1.5 h-32"
-                          required
-                        />
                       </div>
                     </div>
                   </div>
                   
-                  <div className="mt-8 pt-4 border-t">
+                  {/* Business Description */}
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="h-5 w-5 text-primary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <line x1="16" y1="13" x2="8" y2="13"></line>
+                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                          <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                      </div>
+                      <h2 className="text-xl font-semibold">Business Description</h2>
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="description" className="text-sm font-medium">
+                        Tell us about your business <span className="text-red-500">*</span>
+                      </Label>
+                      <Textarea
+                        id="description"
+                        placeholder="Please provide a brief description of your business, your specialties, and why homeowners should choose you..."
+                        value={formData.description}
+                        onChange={(e) => updateFormData('description', e.target.value)}
+                        className="mt-1.5 h-32 resize-none"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t flex justify-end">
                     <Button 
                       type="submit" 
-                      className="w-full md:w-auto px-8 py-2.5" 
+                      className="px-8 py-2.5 bg-primary hover:bg-primary/90 text-white" 
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? 'Submitting...' : 'Submit Application'}
@@ -365,66 +434,63 @@ export default function ContactPage() {
                 </form>
               </div>
             ) : (
-              <div className="bg-white rounded-xl shadow-md p-8 text-center">
-                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckSquare className="h-10 w-10 text-green-600" />
+              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="bg-green-50 p-4 border-b border-green-100">
+                  <h2 className="text-lg font-medium text-green-700">Application Status</h2>
                 </div>
-                <h2 className="text-2xl font-bold mb-4">Application Submitted!</h2>
-                <p className="text-lg mb-6 max-w-lg mx-auto">
-                  Thank you for your interest in joining RoofFindr's professional network. Our team will review your application and get in touch with you shortly.
-                </p>
-                <Button variant="outline" onClick={() => setIsSubmitted(false)} className="mt-2">
-                  Submit Another Application
-                </Button>
+                <div className="p-8 text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckSquareIcon className="h-8 w-8 text-green-600" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-4">Application Submitted!</h2>
+                  <p className="text-lg mb-6 max-w-lg mx-auto text-muted-foreground">
+                    Thank you for your interest in joining RoofFindr's professional network. Our team will review your application and get in touch with you shortly.
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => setIsSubmitted(false)} 
+                    className="mt-2 border-primary text-primary hover:bg-primary/5"
+                  >
+                    Submit Another Application
+                  </Button>
+                </div>
               </div>
             )}
           </div>
         </Container>
       </Section>
       
-      <Section bgColor="bg-primary/10" className="py-12 md:py-16">
+      <Section bgColor="bg-primary/5" className="py-12 md:py-16">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">Why Join RoofFindr?</h2>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Why Join RoofFindr?</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-muted/10 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <UsersIcon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Reach More Customers</h3>
+                <h3 className="text-lg font-semibold mb-3">Reach More Customers</h3>
                 <p className="text-muted-foreground">
                   Connect with homeowners actively looking for quality roofing services in your service area.
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-muted/10 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <ShieldIcon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Build Credibility</h3>
+                <h3 className="text-lg font-semibold mb-3">Build Credibility</h3>
                 <p className="text-muted-foreground">
                   Showcase your work, reviews, and credentials to build trust with potential customers.
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                  </svg>
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-muted/10 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <SmileIcon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Grow Your Business</h3>
+                <h3 className="text-lg font-semibold mb-3">Grow Your Business</h3>
                 <p className="text-muted-foreground">
                   Expand your customer base with high-quality leads from homeowners ready to hire.
                 </p>
@@ -435,4 +501,4 @@ export default function ContactPage() {
       </Section>
     </>
   );
-} 
+}
