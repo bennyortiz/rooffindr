@@ -73,6 +73,14 @@ export const metadata: Metadata = {
   other: {
     'Cache-Control': 'public, max-age=300, s-maxage=600, stale-while-revalidate=300'
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-filled.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon-filled.svg',
+    apple: '/favicon-filled.svg',
+  },
 };
 
 export default function RootLayout({
@@ -83,6 +91,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
