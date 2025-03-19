@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
-import { Container } from "./Container";
-import { SectionProps, ColorProps } from "@/types";
+import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
+import { Container } from './Container';
+import { SectionProps, ColorProps } from '@/types';
+import { Pill } from '@/components/ui/pill';
 
 interface BaseSectionProps extends SectionProps, ColorProps {
   children: ReactNode;
@@ -14,7 +15,7 @@ interface BaseSectionProps extends SectionProps, ColorProps {
 
 /**
  * Base section component for consistent section styling
- * 
+ *
  * @param children - Section content
  * @param id - Optional ID for anchor links
  * @param className - Additional CSS classes for the section element
@@ -28,19 +29,13 @@ export function Section({
   id,
   className,
   containerClassName,
-  bgColor = "bg-white",
+  bgColor = 'bg-white',
   textColor,
   useNarrowContainer = true,
 }: BaseSectionProps) {
   return (
-    <section 
-      id={id}
-      className={cn("py-16", bgColor, textColor, className)}
-    >
-      <Container 
-        narrow={useNarrowContainer} 
-        className={containerClassName}
-      >
+    <section id={id} className={cn('py-16', bgColor, textColor, className)}>
+      <Container narrow={useNarrowContainer} className={containerClassName}>
         {children}
       </Container>
     </section>
@@ -54,30 +49,35 @@ interface SectionHeaderProps {
   title: string;
   description?: string;
   className?: string;
-  align?: "left" | "center" | "right";
+  align?: 'left' | 'center' | 'right';
+  pill?: string;
+  pillVariant?: 'default' | 'secondary' | 'outline' | 'accent' | 'subtle';
 }
 
 export function SectionHeader({
   title,
   description,
   className,
-  align = "center",
+  align = 'center',
+  pill,
+  pillVariant = 'default',
 }: SectionHeaderProps) {
   return (
-    <div 
+    <div
       className={cn(
-        "mb-12",
-        align === "center" && "text-center",
-        align === "right" && "text-right",
+        'mb-12',
+        align === 'center' && 'text-center',
+        align === 'right' && 'text-right',
         className
       )}
     >
-      <h2 className="text-3xl font-bold mb-4">{title}</h2>
-      {description && (
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {description}
-        </p>
+      {pill && (
+        <div className={cn('mb-3', align === 'center' && 'flex justify-center')}>
+          <Pill text={pill} variant={pillVariant} />
+        </div>
       )}
+      <h2 className="text-3xl font-bold mb-4">{title}</h2>
+      {description && <p className="text-muted-foreground max-w-2xl mx-auto">{description}</p>}
     </div>
   );
 }
