@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CheckIcon } from 'lucide-react';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Container } from '@/components/ui/containers/Container';
 import { cn } from '@/lib/utils';
 
@@ -47,6 +47,13 @@ export function Hero({
   children,
   className,
 }: HeroProps) {
+  // Use client-side only rendering for the background image to prevent hydration mismatches
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section className={cn('relative min-h-[80vh] flex items-center', className)}>
       {/* Background Image with Overlay */}
@@ -55,14 +62,21 @@ export function Hero({
         <div className="absolute inset-0 bg-black/50 z-10" />
         {/* Adjusted orange gradient overlay - less opacity for better readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-primary/20 mix-blend-multiply z-20" />
-        <Image
-          src={imageSrc}
-          alt="Hero Background"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover' }}
-        />
+        
+        {/* Only render the image on the client to prevent hydration mismatch */}
+        {isMounted ? (
+          <Image
+            src={imageSrc}
+            alt="Hero Background"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        ) : (
+          // Placeholder div during SSR and initial render
+          <div className="absolute inset-0 bg-gray-800" />
+        )}
       </div>
 
       {/* Hero Content */}
@@ -75,7 +89,7 @@ export function Hero({
             </h1>
             <p className="text-base sm:text-lg md:text-xl opacity-90 max-w-lg drop-shadow-sm">{description}</p>
             <div className="flex flex-wrap gap-3 sm:gap-4">
-              <Button size="lg" className="text-sm sm:text-base" asChild>
+              <Button size="lg" className="text-sm sm:text-base px-4 py-2 h-auto" asChild>
                 <Link href={primaryButtonLink}>{primaryButtonText}</Link>
               </Button>
 
@@ -83,7 +97,7 @@ export function Hero({
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 text-white border-white/20 hover:bg-white/20 text-sm sm:text-base"
+                  className="bg-white/10 text-white border-white/20 hover:bg-white/20 text-sm sm:text-base px-4 py-2 h-auto"
                   asChild
                 >
                   <Link href={secondaryButtonLink}>{secondaryButtonText}</Link>

@@ -10,16 +10,26 @@ export interface SeoConfig {
 }
 
 /**
- * Page-specific SEO configuration
+ * Open Graph metadata
  */
-export interface PageSeoConfig extends SeoConfig {
-  path: string;
-  type?: 'website' | 'article' | 'profile';
+export interface OgConfig {
+  title: string;
+  description: string;
+  type: 'website' | 'article' | 'profile';
+  image?: string;
   publishedTime?: string;
   modifiedTime?: string;
   authors?: string[];
   section?: string;
   tags?: string[];
+}
+
+/**
+ * Page-specific SEO configuration
+ */
+export interface PageSeoConfig extends SeoConfig {
+  url: string;
+  og: OgConfig;
 }
 
 /**

@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { siteConfig } from './config';
 import { PageSeoConfig, SeoConfig } from './types';
 
 /**
  * Generate basic SEO metadata from configuration
- * 
+ *
  * @param config - SEO configuration
  * @returns Metadata object for Next.js
  */
@@ -39,14 +39,32 @@ export function generateMetadata(config: SeoConfig): Metadata {
 }
 
 /**
+ * Generate responsive viewport metadata
+ *
+ * @returns Viewport object for Next.js
+ */
+export function generateViewport(): Viewport {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    themeColor: [
+      { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+      { media: '(prefers-color-scheme: dark)', color: '#18181b' },
+    ],
+  };
+}
+
+/**
  * Generate page-specific SEO metadata
- * 
+ *
  * @param config - Page-specific SEO configuration
  * @returns Metadata object for Next.js
  */
 export function generatePageMetadata(config: PageSeoConfig): Metadata {
   const baseMetadata = generateMetadata(config);
-  const url = `${siteConfig.siteUrl}${config.path}`;
+  const url = config.url;
 
   return {
     ...baseMetadata,
@@ -56,14 +74,14 @@ export function generatePageMetadata(config: PageSeoConfig): Metadata {
     openGraph: {
       ...baseMetadata.openGraph,
       url,
-      type: config.type || 'website',
-      ...(config.type === 'article' && {
+      type: config.og.type,
+      ...(config.og.type === 'article' && {
         article: {
-          publishedTime: config.publishedTime,
-          modifiedTime: config.modifiedTime,
-          authors: config.authors,
-          section: config.section,
-          tags: config.tags,
+          publishedTime: config.og.publishedTime,
+          modifiedTime: config.og.modifiedTime,
+          authors: config.og.authors,
+          section: config.og.section,
+          tags: config.og.tags,
         },
       }),
     },
@@ -72,7 +90,7 @@ export function generatePageMetadata(config: PageSeoConfig): Metadata {
 
 /**
  * Generate structured data JSON string for SEO
- * 
+ *
  * @param type - Type of structured data
  * @param data - Structured data object
  * @returns JSON string for use in script tag

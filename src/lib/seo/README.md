@@ -40,7 +40,7 @@ import { generatePageMetadata, generateCityPageSeo } from '@/lib/seo';
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const cityName = params.slug.replace(/-/g, ' ');
   const citySlug = params.slug;
-  
+
   return generatePageMetadata(generateCityPageSeo(cityName, citySlug));
 }
 ```
@@ -57,16 +57,16 @@ import { siteConfig } from '@/lib/seo';
 export default function SomePage() {
   return (
     <>
-      <StructuredData 
+      <StructuredData
         type="WebPage"
         data={{
-          name: "Page Title",
-          description: "Page description",
+          name: 'Page Title',
+          description: 'Page description',
           url: `${siteConfig.siteUrl}/some-page`,
           // ...other properties
         }}
       />
-      
+
       {/* Page content */}
     </>
   );

@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
-      <Container>
+      <Container narrow>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Logo />
@@ -78,7 +78,7 @@ export function Header() {
           mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         )}
       >
-        <Container>
+        <Container narrow>
           <nav className="py-4 flex flex-col space-y-4">
             {navItems.map((item) => (
               <Link

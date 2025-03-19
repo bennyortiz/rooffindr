@@ -7,7 +7,7 @@ interface StructuredDataProps {
 
 /**
  * Component for adding structured data to a page
- * 
+ *
  * @param type - Type of structured data (e.g., 'Organization', 'LocalBusiness')
  * @param data - Structured data object
  * @returns Script element with JSON-LD structured data

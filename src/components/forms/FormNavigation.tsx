@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ChevronRightIcon } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { ChevronRightIcon } from 'lucide-react';
 
 interface FormNavigationProps {
   onNext?: () => void;
@@ -21,7 +21,7 @@ interface FormNavigationProps {
 
 /**
  * Navigation component for multi-step forms
- * 
+ *
  * @param onNext - Function to call when next button is clicked
  * @param onPrev - Function to call when previous button is clicked
  * @param onSubmit - Function to call when submit button is clicked
@@ -44,40 +44,42 @@ export function FormNavigation({
   nextDisabled = false,
   prevDisabled = false,
   submitDisabled = false,
-  nextText = "Continue",
-  prevText = "Back",
-  submitText = "Submit",
+  nextText = 'Continue',
+  prevText = 'Back',
+  submitText = 'Submit',
   className,
 }: FormNavigationProps) {
   return (
-    <div className={cn("flex justify-between mt-6", className)}>
+    <div className={cn('flex justify-between mt-6', className)}>
       {!isFirstStep && onPrev && (
-        <Button 
-          variant="outline" 
-          onClick={onPrev} 
+        <Button
+          variant="outline"
+          onClick={onPrev}
           disabled={prevDisabled}
           className="border-secondary text-secondary"
         >
           {prevText}
         </Button>
       )}
-      
+
       {isFirstStep && <div />}
-      
+
       {!isLastStep && onNext && (
-        <Button
-          onClick={onNext}
-          disabled={nextDisabled}
-          className={isFirstStep ? "w-full" : ""}
+        <Button 
+          onClick={onNext} 
+          disabled={nextDisabled} 
+          className={cn(
+            isFirstStep ? 'w-full' : ''
+          )}
         >
           {nextText} <ChevronRightIcon className="ml-2 h-4 w-4" />
         </Button>
       )}
-      
+
       {isLastStep && onSubmit && (
-        <Button
-          type="submit"
-          onClick={onSubmit}
+        <Button 
+          type="submit" 
+          onClick={onSubmit} 
           disabled={submitDisabled}
         >
           {submitText}

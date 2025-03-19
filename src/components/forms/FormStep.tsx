@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 interface FormStepProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ interface FormStepProps {
 
 /**
  * Form step component for multi-step forms
- * 
+ *
  * @param children - Form step content
  * @param title - Step title
  * @param description - Step description
@@ -31,20 +31,18 @@ export function FormStep({
   className,
 }: FormStepProps) {
   if (!isActive) return null;
-  
+
   return (
-    <div className={cn(
-      "transition-opacity duration-300",
-      isTransitioning ? "opacity-0" : "opacity-100",
-      className
-    )}>
+    <div
+      className={cn(
+        'transition-opacity duration-300',
+        isTransitioning ? 'opacity-0' : 'opacity-100',
+        className
+      )}
+    >
       <div className="text-center mb-6">
         <h3 className="text-lg font-semibold">{title}</h3>
-        {description && (
-          <p className="text-sm text-muted-foreground">
-            {description}
-          </p>
-        )}
+        {description && <p className="text-sm text-muted-foreground">{description}</p>}
       </div>
       {children}
     </div>

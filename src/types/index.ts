@@ -2,7 +2,7 @@
  * Common type definitions for the RoofFindr application
  */
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 export * from './roofer';
 
 /**

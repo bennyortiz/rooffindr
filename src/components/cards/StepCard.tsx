@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Step } from "@/types";
-import { cn } from "@/lib/utils";
+import { Step } from '@/types';
+import { cn } from '@/lib/utils';
 
 interface StepCardProps {
   step: Step;
@@ -10,13 +10,13 @@ interface StepCardProps {
 
 /**
  * Card component for displaying process steps
- * 
+ *
  * @param step - Step data to display
  * @param className - Additional CSS classes
  */
 export function StepCard({ step, className }: StepCardProps) {
   return (
-    <div className={cn("text-center", className)}>
+    <div className={cn('text-center', className)}>
       <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
         {step.icon}
       </div>

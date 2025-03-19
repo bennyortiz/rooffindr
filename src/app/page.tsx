@@ -1,85 +1,75 @@
-"use client";
+'use client';
 
-import { RoofingForm } from "@/components/common/RoofingForm";
-import { Hero } from "@/components/sections/Hero";
-import { FeaturedRoofers } from "@/components/sections/FeaturedRoofers";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { Cta } from "@/components/sections/Cta";
-import { Faq } from "@/components/sections/Faq";
-import { StructuredData } from "@/components/seo";
-import { 
-  featuredRoofers, 
-  howItWorksSteps, 
-  testimonials, 
-  heroData, 
+import { RoofingForm } from '@/components/common/RoofingForm';
+import { Hero } from '@/components/sections/Hero';
+import { FeaturedRoofers } from '@/components/sections/FeaturedRoofers';
+import { HowItWorks } from '@/components/sections/HowItWorks';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { Cta } from '@/components/sections/Cta';
+import { Faq } from '@/components/sections/Faq';
+import { StructuredData } from '@/components/seo';
+import {
+  featuredRoofers,
+  howItWorksSteps,
+  testimonials,
+  heroData,
   ctaData,
-  faqItems
-} from "@/data/home-page";
-import { Step } from "@/types";
-import { siteConfig } from "@/lib/seo";
+  faqItems,
+} from '@/data/home-page';
+import { Step } from '@/types';
+import { siteConfig } from '@/lib/config/site';
+import { getStepIcon } from '@/lib/utils/icons';
 
 /**
  * Home page component
  */
 export default function Home() {
   // Add icons to the steps data
-  const stepsWithIcons: Step[] = howItWorksSteps.map((step, index) => {
-    const icons = [
-      <span key="icon-1" className="text-2xl">📝</span>,
-      <span key="icon-2" className="text-2xl">🤝</span>,
-      <span key="icon-3" className="text-2xl">⭐</span>,
-      <span key="icon-4" className="text-2xl">🏠</span>,
-    ];
-    
-    return {
-      ...step,
-      icon: icons[index] || <span className="text-2xl">📋</span>,
-    };
-  });
+  const stepsWithIcons: Step[] = howItWorksSteps.map((step, index) => ({
+    ...step,
+    icon: getStepIcon(index),
+  }));
 
   return (
     <>
       {/* Organization Structured Data */}
-      <StructuredData 
+      <StructuredData
         type="Organization"
         data={{
-          name: siteConfig.siteName,
-          url: siteConfig.siteUrl,
-          logo: `${siteConfig.siteUrl}/logo.png`,
+          name: siteConfig.name,
+          url: siteConfig.url,
+          logo: `${siteConfig.url}/logo.png`,
           sameAs: [
-            "https://twitter.com/rooffindr",
-            "https://facebook.com/rooffindr",
-            "https://instagram.com/rooffindr"
+            'https://twitter.com/rooffindr',
+            'https://facebook.com/rooffindr',
+            'https://instagram.com/rooffindr',
           ],
           contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+1-555-123-4567",
-            contactType: "customer service",
-            areaServed: "TX",
-            availableLanguage: "English"
-          }
+            '@type': 'ContactPoint',
+            telephone: '+1-555-123-4567',
+            contactType: 'customer service',
+            areaServed: 'TX',
+            availableLanguage: 'English',
+          },
         }}
       />
-      
+
       {/* FAQ Structured Data */}
-      <StructuredData 
+      <StructuredData
         type="FAQPage"
         data={{
-          mainEntity: faqItems.map(item => ({
-            "@type": "Question",
+          mainEntity: faqItems.map((item) => ({
+            '@type': 'Question',
             name: item.question,
             acceptedAnswer: {
-              "@type": "Answer",
-              text: item.answer
-            }
-          }))
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
         }}
       />
       {/* Hero Section */}
-      <Hero
-        {...heroData}
-      >
+      <Hero {...heroData}>
         <RoofingForm />
       </Hero>
 
@@ -98,10 +88,7 @@ export default function Home() {
       />
 
       {/* Testimonials Section */}
-      <Testimonials
-        title="What Texas Homeowners Say"
-        testimonials={testimonials}
-      />
+      <Testimonials title="What Texas Homeowners Say" testimonials={testimonials} />
 
       {/* FAQ Section */}
       <Faq
@@ -112,9 +99,7 @@ export default function Home() {
       />
 
       {/* CTA Section */}
-      <Cta
-        {...ctaData}
-      />
+      <Cta {...ctaData} />
     </>
   );
 }

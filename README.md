@@ -52,6 +52,7 @@ npx shadcn add [component-name]
 ```
 
 Example:
+
 ```bash
 npx shadcn add dropdown-menu toast tabs
 ```
@@ -71,11 +72,30 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 rooffindr/
 ├── public/                 # Static assets
 ├── src/
-│   ├── app/                # App router
-│   ├── components/         
-│   │   └── ui/             # shadcn/ui components
-│   └── lib/                # Utility functions
-├── tailwind.config.js      # Tailwind configuration
+│   ├── app/                # App router pages and layouts
+│   │   ├── layout.tsx      # Root layout
+│   │   ├── page.tsx        # Home page
+│   │   ├── globals.css     # Global styles
+│   │   ├── about/          # About page
+│   │   ├── cities/         # Cities pages
+│   │   └── roofers/        # Roofers pages
+│   ├── components/
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── common/         # Common components
+│   │   ├── layout/         # Layout components
+│   │   ├── sections/       # Page section components
+│   │   ├── cards/          # Card components
+│   │   ├── forms/          # Form components
+│   │   └── seo/            # SEO-related components
+│   ├── data/               # Data files
+│   │   └── roofers/        # Roofer-related data
+│   ├── lib/                # Utility functions
+│   │   ├── config/         # Configuration files
+│   │   ├── seo/            # SEO utilities
+│   │   └── utils/          # General utilities
+│   └── types/              # TypeScript type definitions
+├── next.config.ts          # Next.js configuration
+├── tailwind.config.js      # Tailwind CSS configuration
 └── tsconfig.json           # TypeScript configuration
 ```
 

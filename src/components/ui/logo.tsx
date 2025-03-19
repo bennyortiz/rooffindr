@@ -25,7 +25,7 @@ export function Logo({
   const baseIconClass = cn('inline-block mr-1', iconClass);
 
   return (
-    <Link href={href} className={cn('flex items-center gap-1.5', className)}>
+    <Link href={href} className={cn('flex items-center gap-1', className)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

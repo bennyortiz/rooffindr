@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -23,6 +23,13 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap', // Add display swap to improve loading
 });
+
+// Add viewport settings
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: 'RoofFindr | Texas Roofing Directory',
@@ -63,12 +70,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // Add viewport settings
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   // Add cache control
   other: {
     'Cache-Control': 'public, max-age=300, s-maxage=600, stale-while-revalidate=300'
@@ -99,6 +100,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${jakartaSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
