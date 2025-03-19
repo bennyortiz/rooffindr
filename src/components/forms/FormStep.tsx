@@ -35,7 +35,7 @@ export function FormStep({
   return (
     <div
       className={cn(
-        'transition-opacity duration-300',
+        'transition-opacity duration-300 flex flex-col flex-grow h-full',
         isTransitioning ? 'opacity-0' : 'opacity-100',
         className
       )}
@@ -44,7 +44,9 @@ export function FormStep({
         <h3 className="text-lg font-semibold">{title}</h3>
         {description && <p className="text-sm text-muted-foreground">{description}</p>}
       </div>
-      {children}
+      <div className="flex-grow flex flex-col justify-between">
+        {children}
+      </div>
     </div>
   );
 }

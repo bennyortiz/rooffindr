@@ -14,7 +14,7 @@ export const cities: City[] = [
     description:
       "Dallas is a modern metropolis in north Texas, a commercial and cultural hub of the region. The city's prominence comes from its historical importance as a center for the oil and cotton industries, its position along numerous railroad lines, and its geographic position.",
     image:
-      'https://images.unsplash.com/photo-1545194445-dddb8f4487c6?q=80&w=2070&auto=format&fit=crop',
+      'https://upload.wikimedia.org/wikipedia/commons/c/c2/Dallasdowntown2023.jpg',
     metaDescription:
       "Find top-rated roofing professionals in Dallas, TX. Connect with local roofers who understand Dallas's unique weather challenges and building requirements.",
     metaKeywords: [
@@ -36,7 +36,7 @@ export const cities: City[] = [
     description:
       "Houston is the most populous city in Texas and the fourth-most populous city in the United States. Known for its diverse population, strong industries, and NASA's Johnson Space Center, Houston is a major hub for the energy, manufacturing, and healthcare sectors.",
     image:
-      'https://images.unsplash.com/photo-1572635148818-ef6bdfbd0578?q=80&w=2070&auto=format&fit=crop',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Aerial_views_of_the_Houston%2C_Texas%2C_skyline_in_2014_LCCN2014632226.tif/lossy-page1-2560px-Aerial_views_of_the_Houston%2C_Texas%2C_skyline_in_2014_LCCN2014632226.tif.jpg',
     metaDescription:
       "Find top-rated roofing professionals in Houston, TX. Connect with local roofers who understand Houston's unique weather challenges and building requirements.",
     metaKeywords: [
@@ -58,7 +58,7 @@ export const cities: City[] = [
     description:
       'Austin is the capital city of Texas and is known for its vibrant live-music scene, outdoor activities, and tech industry. Home to the University of Texas flagship campus, Austin has a strong economy, diverse culture, and is often ranked as one of the best places to live in the United States.',
     image:
-      'https://images.unsplash.com/photo-1531218150217-54595bc2b934?q=80&w=2070&auto=format&fit=crop',
+      'https://upload.wikimedia.org/wikipedia/commons/6/65/Austin_Downtown_2024.jpg',
     metaDescription:
       "Find top-rated roofing professionals in Austin, TX. Connect with local roofers who understand Austin's unique weather challenges and building requirements.",
     metaKeywords: [
@@ -80,7 +80,7 @@ export const cities: City[] = [
     description:
       "San Antonio is a major city in south-central Texas with a rich colonial heritage. It's home to the Alamo, the River Walk, and several historic missions. The city has a diverse economy with major sectors including health care, government, financial services, and tourism.",
     image:
-      'https://images.unsplash.com/photo-1569939237022-4b60cbb8c476?q=80&w=2070&auto=format&fit=crop',
+      'https://upload.wikimedia.org/wikipedia/commons/b/b2/SATX_Downtown.jpg',
     metaDescription:
       "Find top-rated roofing professionals in San Antonio, TX. Connect with local roofers who understand San Antonio's unique weather challenges and building requirements.",
     metaKeywords: [
@@ -102,7 +102,7 @@ export const cities: City[] = [
     description:
       "Fort Worth is a city in North Texas known for its Western heritage, world-class museums, and vibrant downtown area. It's the fifth-largest city in Texas and part of the Dallas-Fort Worth-Arlington metropolitan area, which is the fourth-largest metropolitan area in the United States.",
     image:
-      'https://images.unsplash.com/photo-1545486332-9e0999c535b2?q=80&w=2070&auto=format&fit=crop',
+      'https://upload.wikimedia.org/wikipedia/commons/b/bb/Downtown_Fort_Worth_Sunset.jpg',
     metaDescription:
       "Find top-rated roofing professionals in Fort Worth, TX. Connect with local roofers who understand Fort Worth's unique weather challenges and building requirements.",
     metaKeywords: [

@@ -155,7 +155,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       role="group"
       aria-roledescription="slide"
-      className="min-w-0 shrink-0 grow-0 basis-full pl-4 flex items-stretch"
+      className={cn("min-w-0 shrink-0 grow-0 flex items-stretch", className)}
       data-slot="carousel-item"
       {...props}
     />

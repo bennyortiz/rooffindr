@@ -22,7 +22,7 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
 
   return (
     <Card
-      className={`overflow-hidden border-0 shadow-md h-full flex flex-col group w-full ${className || ''}`}
+      className={`gap-6 rounded-xl py-0 overflow-hidden border-0 shadow-md h-full flex flex-col group w-full ${className || ''}`}
     >
       <div className="h-36 sm:h-44 relative overflow-hidden bg-primary/5">
         <Image
@@ -30,17 +30,14 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
           alt={roofer.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+          className="object-cover transition-transform group-hover:scale-105"
           style={{
-            objectFit: 'cover',
-            objectPosition: 'top',
-            transform: 'scale(1.2)',
-            transition: 'transform 0.5s ease',
+            objectPosition: 'center top'
           }}
-          className="group-hover:scale-125"
         />
       </div>
       <CardContent className="p-4 sm:p-6 flex-grow flex flex-col">
-        <h3 className="text-lg sm:text-xl font-semibold mb-2">{roofer.name}</h3>
+        <h3 className="text-lg sm:text-xl font-semibold mb-2 line-clamp-1">{roofer.name}</h3>
         <div className="flex items-center mb-2 sm:mb-3">
           <RatingStars rating={roofer.rating} />
           <span className="ml-2 text-xs sm:text-sm font-medium">
@@ -48,7 +45,7 @@ export function RooferCard({ roofer, className }: RooferCardProps) {
           </span>
         </div>
         <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-          {roofer.services.map((service) => (
+          {roofer.services.slice(0, 3).map((service) => (
             <span
               key={service}
               className="px-1.5 sm:px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-full"

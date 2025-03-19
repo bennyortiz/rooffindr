@@ -81,8 +81,8 @@ export function Hero({
 
       {/* Hero Content */}
       <Container narrow className="relative z-10 py-12 md:py-16 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="text-white space-y-4 sm:space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start lg:items-center">
+          <div className="text-white space-y-4 sm:space-y-6 flex flex-col justify-center h-full">
             {/* Added text shadow for better text visibility */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-shadow-lg drop-shadow-md">
               {title}
@@ -117,7 +117,7 @@ export function Hero({
 
           {/* Right Side Content - Form or Custom Content */}
           {children && (
-            <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 mt-6 lg:mt-0">
+            <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 mt-6 lg:mt-0 h-full flex flex-col justify-center">
               {children}
             </div>
           )}

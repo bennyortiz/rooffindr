@@ -15,6 +15,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { RooferCard } from '@/components/cards/RooferCard';
 import { Section, SectionHeader } from '@/components/ui/containers/Section';
 import { Roofer } from '@/types';
+import { Container } from '@/components/ui/containers/Container';
 
 interface FeaturedRoofersProps {
   title: string;
@@ -93,69 +94,72 @@ export function FeaturedRoofers({
     <Section bgColor="bg-muted" className={className}>
       <SectionHeader title={title} />
 
-      <Carousel 
-        className="w-full mx-auto"
-        opts={{
-          align: 'start',
-          slidesToScroll: 'auto',
-          containScroll: 'trimSnaps'
-        }}
-      >
-        <CarouselContent className="h-full -ml-2 md:-ml-4">
-          {isLoading
-            ? // Skeleton loading UI
-              Array.from({ length: 3 }).map((_, index) => (
-                <CarouselItem
-                  key={`skeleton-${index}`}
-                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 h-full"
-                >
-                  <div className="h-full w-full">
-                    <div
-                      ref={el => {
-                        cardsRef.current[index] = el;
-                      }}
-                      style={cardHeight ? { height: `${cardHeight}px` } : undefined}
-                      className="w-full"
-                    >
-                      <Card className="overflow-hidden border-0 shadow-md h-full flex flex-col">
-                        <Skeleton className="h-48 w-full" />
-                        <CardContent className="p-6">
-                          <Skeleton className="h-6 w-3/4 mb-4" />
-                          <Skeleton className="h-4 w-1/2 mb-3" />
-                          <div className="flex gap-2 mb-4">
-                            <Skeleton className="h-6 w-16 rounded-full" />
-                            <Skeleton className="h-6 w-20 rounded-full" />
-                            <Skeleton className="h-6 w-14 rounded-full" />
-                          </div>
-                          <Skeleton className="h-9 w-full mt-4" />
-                        </CardContent>
-                      </Card>
+      <Container fullWidth={true}>
+        <Carousel 
+          className="w-full mx-auto"
+          opts={{
+            align: 'start',
+            slidesToScroll: 1,
+            containScroll: 'trimSnaps',
+            dragFree: false
+          }}
+        >
+          <CarouselContent className="h-full -ml-2 md:-ml-4">
+            {isLoading
+              ? // Skeleton loading UI
+                Array.from({ length: 3 }).map((_, index) => (
+                  <CarouselItem
+                    key={`skeleton-${index}`}
+                    className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 h-full"
+                  >
+                    <div className="h-full w-full">
+                      <div
+                        ref={el => {
+                          cardsRef.current[index] = el;
+                        }}
+                        style={cardHeight ? { height: `${cardHeight}px` } : undefined}
+                        className="w-full"
+                      >
+                        <Card className="gap-6 rounded-xl py-0 overflow-hidden border-0 shadow-md h-full flex flex-col">
+                          <Skeleton className="h-44 w-full" />
+                          <CardContent className="p-6">
+                            <Skeleton className="h-6 w-3/4 mb-4" />
+                            <Skeleton className="h-4 w-1/2 mb-3" />
+                            <div className="flex gap-2 mb-4">
+                              <Skeleton className="h-6 w-16 rounded-full" />
+                              <Skeleton className="h-6 w-20 rounded-full" />
+                              <Skeleton className="h-6 w-14 rounded-full" />
+                            </div>
+                            <Skeleton className="h-10 w-full mt-4" />
+                          </CardContent>
+                        </Card>
+                      </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))
-            : // Actual content
-              roofers.map((roofer, index) => (
-                <CarouselItem key={roofer.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 h-full">
-                  <div className="h-full w-full">
-                    <div 
-                      ref={el => {
-                        cardsRef.current[index] = el;
-                      }}
-                      style={cardHeight ? { height: `${cardHeight}px` } : undefined}
-                      className="w-full"
-                    >
-                      <RooferCard roofer={roofer} />
+                  </CarouselItem>
+                ))
+              : // Actual content
+                roofers.map((roofer, index) => (
+                  <CarouselItem key={roofer.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 h-full">
+                    <div className="h-full w-full">
+                      <div 
+                        ref={el => {
+                          cardsRef.current[index] = el;
+                        }}
+                        style={cardHeight ? { height: `${cardHeight}px` } : undefined}
+                        className="w-full"
+                      >
+                        <RooferCard roofer={roofer} />
+                      </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-        </CarouselContent>
-        <div className="flex justify-center mt-4">
-          <CarouselPrevious className="relative static mr-2 translate-x-0 translate-y-0" />
-          <CarouselNext className="relative static translate-x-0 translate-y-0" />
-        </div>
-      </Carousel>
+                  </CarouselItem>
+                ))}
+          </CarouselContent>
+          <div className="flex justify-center mt-4">
+            <CarouselPrevious className="relative static mr-2 translate-x-0 translate-y-0" />
+            <CarouselNext className="relative static translate-x-0 translate-y-0" />
+          </div>
+        </Carousel>
+      </Container>
 
       <div className="text-center mt-10">
         <Button

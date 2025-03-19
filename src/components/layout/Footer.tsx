@@ -34,8 +34,8 @@ const footerLinkGroups: FooterLinkGroup[] = [
     links: [
       { label: 'Blog', href: '/blog' },
       { label: 'FAQ', href: '/faq' },
-      { label: 'Roofing Guide', href: '/roofing-guide' },
-      { label: 'Roofing Glossary', href: '/glossary' },
+      { label: 'Roofing Guide', href: '/blog/roofing-guide' },
+      { label: 'Roofing Glossary', href: '/blog/roofing-glossary' },
     ],
   },
   {

@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/containers/Container';
 import { cn } from '@/lib/utils';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { LegalContent } from '@/components/ui/legal-content';
 
 interface Section {
   id: string;
@@ -91,7 +92,7 @@ export function LegalPageLayout({
   return (
     <div className={cn('bg-white py-8 md:py-12', className)}>
       <Container narrow>
-        <div className="mb-6 md:mb-8">
+        <div className="mb-6 md:mb-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">{title}</h1>
           {subtitle && <p className="text-muted-foreground">{subtitle}</p>}
           {lastUpdated && (
@@ -168,8 +169,10 @@ export function LegalPageLayout({
           </div>
 
           {/* Content */}
-          <div className="flex-1 legal-content prose max-w-none prose-headings:scroll-mt-24 prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h2:mt-10 prose-h3:mt-8 prose-p:text-base prose-p:leading-7 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold">
-            {children}
+          <div className="flex-1">
+            <LegalContent>
+              {children}
+            </LegalContent>
           </div>
         </div>
       </Container>

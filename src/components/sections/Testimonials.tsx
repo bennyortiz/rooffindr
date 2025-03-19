@@ -107,11 +107,11 @@ export function Testimonials({
       </div>
 
       {/* Mobile view: Carousel */}
-      <Carousel className="md:hidden w-full mx-auto">
-        <CarouselContent className="h-full">
+      <Carousel className="md:hidden w-full mx-auto px-4 overflow-visible">
+        <CarouselContent className="h-full -ml-4">
           {testimonials.map((testimonial, index) => (
-            <CarouselItem key={index} className="h-full">
-              <div className="mx-2 h-full">
+            <CarouselItem key={index} className="h-full pl-4 sm:basis-full">
+              <div className="h-full">
                 <div
                   ref={el => {
                     mobileCardsRef.current[index] = el;
