@@ -15,17 +15,17 @@ export function LegalContent({ children, className = '' }: LegalContentProps) {
       prose prose-lg max-w-none
       
       /* Base text styling */
-      text-primary/80
+      text-secondary/90
       
       /* Headings - general */
       prose-headings:font-bold 
-      prose-headings:text-primary
+      prose-headings:text-secondary
       prose-headings:mb-4
       prose-headings:scroll-mt-24
       
       /* H2 headings - major sections */
       prose-h2:text-2xl
-      prose-h2:text-primary
+      prose-h2:text-secondary
       prose-h2:mt-16
       prose-h2:pt-5
       prose-h2:border-t
@@ -33,13 +33,13 @@ export function LegalContent({ children, className = '' }: LegalContentProps) {
       
       /* H3 headings - subsections */
       prose-h3:text-xl
-      prose-h3:text-primary/90
+      prose-h3:text-accent
       prose-h3:mt-10
       prose-h3:mb-3
       
       /* H4 headings - minor subsections */
       prose-h4:text-lg
-      prose-h4:text-primary/80
+      prose-h4:text-secondary
       prose-h4:font-semibold
       prose-h4:mt-8
       prose-h4:mb-3
@@ -78,7 +78,7 @@ export function LegalContent({ children, className = '' }: LegalContentProps) {
       [&_ul_li::before]:h-2
       [&_ul_li::before]:w-2
       [&_ul_li::before]:rounded-full
-      [&_ul_li::before]:bg-primary
+      [&_ul_li::before]:bg-accent
       [&_ul_li::before]:opacity-80
       
       /* Lists after headings */
@@ -92,7 +92,7 @@ export function LegalContent({ children, className = '' }: LegalContentProps) {
       [&_ol_li]:relative
       [&_ol_li]:pl-2
       [&_ol_li]:my-3
-      [&_ol_li::marker]:text-primary
+      [&_ol_li::marker]:text-accent
       [&_ol_li::marker]:font-bold
       
       /* Lists after headings */
@@ -101,30 +101,30 @@ export function LegalContent({ children, className = '' }: LegalContentProps) {
       [&_h4+ol]:mt-5
       
       /* Text highlights */
-      prose-strong:text-primary 
+      prose-strong:text-accent
       prose-strong:font-semibold
       
       /* Links */
-      prose-a:text-primary
+      prose-a:text-accent
       prose-a:font-medium
       prose-a:no-underline
       prose-a:transition-colors
-      prose-a:hover:text-primary/70
+      prose-a:hover:text-accent/70
       
       /* Blockquotes */
       prose-blockquote:border-l-4
-      prose-blockquote:border-primary/60
+      prose-blockquote:border-accent/60
       prose-blockquote:pl-6
       prose-blockquote:italic
-      prose-blockquote:text-primary/70
-      prose-blockquote:bg-primary/5
+      prose-blockquote:text-secondary/80
+      prose-blockquote:bg-accent/5
       prose-blockquote:py-2
       prose-blockquote:px-4
       prose-blockquote:rounded-r-md
       
       /* Code blocks */
       prose-code:bg-gray-100
-      prose-code:text-primary
+      prose-code:text-accent
       prose-code:px-1.5
       prose-code:py-0.5
       prose-code:rounded
@@ -134,11 +134,11 @@ export function LegalContent({ children, className = '' }: LegalContentProps) {
       /* Tables */
       prose-table:w-full
       prose-table:border-collapse
-      prose-thead:bg-primary/10
+      prose-thead:bg-accent/10
       prose-th:p-3
       prose-th:text-left
       prose-th:font-semibold
-      prose-th:text-primary
+      prose-th:text-secondary
       prose-td:p-3
       prose-td:border-b
       prose-td:border-gray-200
